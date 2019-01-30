@@ -27,6 +27,8 @@ namespace Pitch_A_Tent
             {
                 configuration.RootPath = "ClientApp/build";
             });
+            //Add line for configuration of connection string
+            services.AddSingleton<IConfiguration>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
