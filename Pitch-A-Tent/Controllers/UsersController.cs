@@ -3,14 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 
 namespace Pitch_A_Tent.Controllers
 {
-    public class UsersController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class UsersController : ControllerBase
     {
-        public IActionResult Index()
+
+        private string _connectionstring;
+
+        public UsersController(IConfiguration configuration)
         {
-            return View();
+            _connectionstring = configuration.GetSection("ConnectionString").Value;
+        }
+
+
+        [HttpGet("/login")]
+        public IActionResult Login()
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpPost("/register")]
+        public IActionResult Register()
+        {
+            throw new NotImplementedException();
         }
     }
 }
