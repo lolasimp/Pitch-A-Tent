@@ -12,3 +12,4 @@ const getCampsites = () => {
     })
 }
 export default getCampsites;
+

@@ -17,9 +17,8 @@ namespace Pitch_A_Tent.DataAccess
             using (var connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
-                var result = connection.Query<CampingType>(@"select c.*, l.backcountry, l.city, l.state, l.description, l.img, l.hourOfOperation, l.latLong, l.modern_camping, l.parkCode, l.glamping, l.reveiewId
-                                                            from campingType as c
-                                                            join locations as l on c.location_id = l.id");
+                var result = connection.Query<CampingType>(@"select *
+                                                            from campingType");
 
                 return result;
             }
@@ -30,7 +29,7 @@ namespace Pitch_A_Tent.DataAccess
             using (var connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
-                var result = connection.Query<CampingType>(@"select c.*
+                var result = connection.Query<CampingType>(@"select *
                                                             from campingType as c
                                                             where c.id = @id", new { id = id });
 
@@ -63,28 +62,7 @@ namespace Pitch_A_Tent.DataAccess
             }
         }
 
-        public bool UpdateProduct(int id, CampingType campsite)
-        {
-            using (var db = new SqlConnection(ConnectionString))
-            {
-                db.Open();
-                var result = db.Execute(@"UPDATE [dbo].[campingType]
-                    SET [category] = @category, [price] = @price, [title] = @title, [description] = @description, [quantity] = @quantity, [owner_id] = @owner_id
-                    WHERE id = @id",
-                    new
-                    {
-                        id,
-                        category = product.Category,
-                        price = product.Price,
-                        title = product.Title,
-                        description = product.Description,
-                        quantity = product.Quantity,
-                        owner_id = product.Owner_Id,
-                    }
-                );
-                return result == 1;
-            }
-        }
+
 
 
         public bool DeleteCampType(int id)
@@ -96,18 +74,5 @@ namespace Pitch_A_Tent.DataAccess
                 return result == 1;
             }
         }
-        //public bool AddLocations(CampingType locations)
-        //{
-        //    using (var connection =new SqlConnection(ConnectionString))
-        //    {
-        //        connection.Open();
-
-        //        var result = connection.Execute(@"insert into locations
-        //                                        output inserted.*
-        //                                        values(@id, @backcountry, @city, @state, @description, 
-        //                                                    @img, @hourOfOperation, @latLong, @modern_camping, 
-        //                                                    @parkCode, @glamping, @reveiewId)", locations);
-        //    }
-        //}
     }
 }

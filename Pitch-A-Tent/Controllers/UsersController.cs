@@ -5,32 +5,47 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
+using Pitch_A_Tent.DataAccess;
 
 namespace Pitch_A_Tent.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ ApiController]
     public class UsersController : ControllerBase
     {
 
-        private string _connectionstring;
+        public UsersStorage _storage;
 
-        public UsersController(IConfiguration configuration)
+        public UsersController()
         {
-            _connectionstring = configuration.GetSection("ConnectionString").Value;
+            _storage = new UsersStorage();
+        }
+
+        [HttpGet("/user")]
+        public IActionResult GetAllUsers()
+        {
+            return Ok(_storage.GetAllUsers());
         }
 
 
-        [HttpGet("/login")]
-        public IActionResult Login()
+        [HttpGet("/user/{id}")]
+        public IActionResult GetSingleUser(int id)
         {
-            throw new NotImplementedException();
+            return Ok(_storage.GetSingleUser(id));
         }
 
-        [HttpPost("/register")]
-        public IActionResult Register()
-        {
-            throw new NotImplementedException();
-        }
+
+        //[HttpPost("/register")]
+        //public IActionResult Register()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //[HttpDelete("{id}")]
+        //public IActionResult DeleteUser(int id)
+        //{
+        //    return Ok(_storage.DeleteSingleUser(id));
+        //}
     }
 }
