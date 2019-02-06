@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.OAuth;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Pitch_A_Tent
 {
@@ -21,7 +24,21 @@ namespace Pitch_A_Tent
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.IncludeErrorDetails = true;
+                    options.Authority = "https://securetoken.google.com/";
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidIssuer = "https://securetoken.google.com/",
+                        ValidateAudience = true,
+                        ValidAudience = "fish-store-a71e6",
+                        ValidateLifetime = true
+                    };
+                }
+            );
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
