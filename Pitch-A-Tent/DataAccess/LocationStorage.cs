@@ -64,7 +64,7 @@ namespace Pitch_A_Tent.DataAccess
                                  SET [name] = @name, [city] = @city, [state] = @state, [description] = @description, [latLong] = @latLong, [hourOfOperation] = @hourOfOperation
                                  WHERE locations.id = @id", 
                                  new {
-                                     id, name = location.name,
+                                     name = location.name,
                                      city = location.city,
                                      state = location.state,
                                      description = location.description,
