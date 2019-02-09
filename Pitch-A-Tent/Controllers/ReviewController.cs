@@ -11,41 +11,42 @@ namespace Pitch_A_Tent.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class WishItemController : ControllerBase
+    public class ReviewController : ControllerBase
     {
-        public WishItemStorage _storage;
+        public ReviewStorage _storage;
 
-        public WishItemController()
+        public ReviewController()
         {
-            _storage = new WishItemStorage();
+            _storage = new ReviewStorage();
         }
 
         //wishItem
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(_storage.GetAllWishItems());
+            return Ok(_storage.GetAllReviews());
         }
 
         //wishItem/id
         [HttpGet("{id}")]
         public IActionResult GetOne(int id)
         {
-            return Ok(_storage.GetWishItemByUserId(id));
+            return Ok(_storage.GetReviewByLocationId(id));
         }
 
         //wishItem
         [HttpPost]
-        public IActionResult AddNewWishItem([FromBody]WishItem wishItem)
+        public IActionResult AddNewReview([FromBody]Review review)
         {
-            return Ok(_storage.AddNewWishItem(wishItem));
+            return Ok(_storage.AddReview(review));
         }
 
         //wishItem/id
         [HttpDelete("{id}")]
-        public IActionResult DeleteWishItem(int id)
+        public IActionResult DeleteReview(int id)
         {
-            return Ok(_storage.DeleteWishItem(id));
+            return Ok(_storage.DeleteReview(id));
         }
     }
+
 }

@@ -48,48 +48,22 @@ namespace Pitch_A_Tent.DataAccess
         //id 
 
 
-        //public bool AddNewWishItem(WishItem wishItem)
-        //{
-        //    using (var connection = new SqlConnection(ConnectionString))
-        //    {
-        //        connection.Open();
-
-        //        var result3 = connection.Execute(@"INSERT INTO [dbo].[wishItem]
-        //                                        ([User_id],
-        //                                        [Location_id]
-        //                                        [CampingTypeId]
-        //                                        [Description])
-        //                                        VALUES (@User_id, @Location_id, @CampingTypeId, @Description)", wishItem
-        //                                        );
-
-        //        return result3 == 1;
-        //    }
-        //}
-
-
-        public WishItem AddNewWishItem(WishItem wishItem)
+        public bool AddNewWishItem(WishItem wishItem)
         {
             using (var connection = new SqlConnection(ConnectionString))
             {
-                var wishObject = new
-                {
-                    User_id = wishItem.User_id,
-                    Location_id = wishItem.Location_id,
-                    CampingTypeId = wishItem.CampingTypeId,
-                    Description = wishItem.Description
-                };
+                connection.Open();
 
-                var command = @"
-                                DECLARE @inserted TABLE (User_id int, Location_id int, CampingTypeId int, Description string, Id int);
-                                INSERT INTO wishItem (User_id, Location_id, CampingTypeId, Description)
-                                OUTPUT INSERTED.Id, INSERTED.User_id, INSERTED.Location_id, INSERTED.CampingTypeId, INSERTED.Description
-                                INTO @inserted
-                                VALUES(@User_id, @Location_id, @CampingTypeId, @Description)
-                                SELECT * FROM @inserted";
+                var result3 = connection.Execute(@"INSERT INTO [dbo].[wishItem]
+                                                ([User_id],
+                                                [Location_id])
+                                                VALUES (@User_id, @Location_id)", wishItem
+                                                );
 
-                return connection.QueryFirstOrDefault<WishItem>(command, wishObject);
+                return result3 == 1;
             }
         }
+
 
         public bool DeleteWishItem(int id)
         {

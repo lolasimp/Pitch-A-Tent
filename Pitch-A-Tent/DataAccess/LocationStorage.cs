@@ -69,13 +69,15 @@ namespace Pitch_A_Tent.DataAccess
                                      state = location.state,
                                      description = location.description,
                                      latLong = location.latLong,
-                                     hourOfOperation = location.hourOfOperation
+                                     hourOfOperation = location.hourOfOperation,
+                                     id = location.id
                                  });
 
                 return result == 1;
             }
         }
 
+        //Can NOT DELETE bc FK on review 
           public bool DeleteLocation(int id)
         {
             using (var connection = new SqlConnection(ConnectionString))
@@ -89,18 +91,3 @@ namespace Pitch_A_Tent.DataAccess
         }
     }
 }
-
-
-//id 
-//campingTypeId
-// reveiewId 
-// name 
-//state 
-// description 
-// img
-// glamping 
-// backcountry 
-// modern_camping 
-// latLong 
-// parkCode
-//hourOfOperation 
