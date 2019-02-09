@@ -37,35 +37,35 @@ namespace Pitch_A_Tent.DataAccess
             }
         }
 
-        public bool AddCampType(CampingType campsite)
-        {
-            using (var connection = new SqlConnection(ConnectionString))
-            {
-                connection.Open();
+        //public bool AddCampType(CampingType campsite)
+        //{
+        //    using (var connection = new SqlConnection(ConnectionString))
+        //    {
+        //        connection.Open();
 
-                var result = connection.Execute(@"insert into [dbo].[campingType], ([accessRoad], [backcountry], [campStore], 
-                                                [cell_phone_reception], [dumpStation], [electricalHookUp],
-                                                [fireStovePolicy], [firewood_for_sale], [food_storage_locker],
-                                                [glamping], [internetConnectivity], [laundry], 
-                                                [modern_camping], [potableWater], [rvOnly],
-                                                [showers], [staffOnSite], [state_nationl_park],
-                                                [tent_only], [tent_only], [toilets])
-                                                values(@id, @accessRoad, @backcountry, @campStore, 
-                                                @cell_phone_reception, @dumpStation, @electricalHookUp,
-                                                @fireStovePolicy, @firewood_for_sale, @food_storage_locker,
-                                                @glamping, @internetConnectivity, @laundry, 
-                                                @modern_camping, @potableWater, @rvOnly,
-                                                @showers, @staffOnSite, @state_nationl_park,
-                                                @tent_only, @tent_only, @toilets)", campsite);
+        //        var result = connection.Execute(@"insert into [dbo].[campingType], ([accessRoad], [backcountry], [campStore], 
+        //                                        [cell_phone_reception], [dumpStation], [electricalHookUp],
+        //                                        [fireStovePolicy], [firewood_for_sale], [food_storage_locker],
+        //                                        [glamping], [internetConnectivity], [laundry], 
+        //                                        [modern_camping], [potableWater], [rvOnly],
+        //                                        [showers], [staffOnSite], [state_nationl_park],
+        //                                        [tent_only], [tent_only], [toilets])
+        //                                        values(@id, @accessRoad, @backcountry, @campStore, 
+        //                                        @cell_phone_reception, @dumpStation, @electricalHookUp,
+        //                                        @fireStovePolicy, @firewood_for_sale, @food_storage_locker,
+        //                                        @glamping, @internetConnectivity, @laundry, 
+        //                                        @modern_camping, @potableWater, @rvOnly,
+        //                                        @showers, @staffOnSite, @state_nationl_park,
+        //                                        @tent_only, @tent_only, @toilets)", campsite);
 
-                return result == 1;
-            }
-        }
-
-
+        //        return result == 1;
+        //    }
+        //}
 
 
-        public bool DeleteCampType(int id)
+
+
+        public bool DeleteCampingType(int id)
         {
             using (var db = new SqlConnection(ConnectionString))
             {

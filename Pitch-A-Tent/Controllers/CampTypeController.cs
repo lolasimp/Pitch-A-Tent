@@ -33,25 +33,11 @@ namespace Pitch_A_Tent.Controllers
             return Ok(_storage.GetCampsiteTypeById(id));
         }
 
-        [HttpPost]
-        public IActionResult AddCampType(CampingType campsite)
+        [HttpDelete("{id}")]
+        public IActionResult DeleteCampingType(int id)
         {
-            return Ok(_storage.AddCampType(campsite));
+            return Ok(_storage.DeleteCampingType(id));
         }
-
-
-
-        //[HttpPut("{id}")]
-        //public IActionResult UpdateCampingTypes([FromBody] string campsite, int id)
-        //{
-        //    return Ok(_storage.UpdateCampType(campsite, id));
-        //}
-
-        //[HttpDelete("{id}")]
-        //public IActionResult DeleteCampingType(int id)
-        //{
-        //    return Ok(_storage.DeleteCampType(id));
-        //}
     }
 
 }

@@ -64,18 +64,20 @@ namespace Pitch_A_Tent.DataAccess
                                  SET [name] = @name, [city] = @city, [state] = @state, [description] = @description, [latLong] = @latLong, [hourOfOperation] = @hourOfOperation
                                  WHERE locations.id = @id", 
                                  new {
-                                     id, name = location.name,
+                                     name = location.name,
                                      city = location.city,
                                      state = location.state,
                                      description = location.description,
                                      latLong = location.latLong,
-                                     hourOfOperation = location.hourOfOperation
+                                     hourOfOperation = location.hourOfOperation,
+                                     id = location.id
                                  });
 
                 return result == 1;
             }
         }
 
+        //Can NOT DELETE bc FK on review 
           public bool DeleteLocation(int id)
         {
             using (var connection = new SqlConnection(ConnectionString))
@@ -89,18 +91,3 @@ namespace Pitch_A_Tent.DataAccess
         }
     }
 }
-
-
-//id 
-//campingTypeId
-// reveiewId 
-// name 
-//state 
-// description 
-// img
-// glamping 
-// backcountry 
-// modern_camping 
-// latLong 
-// parkCode
-//hourOfOperation 
