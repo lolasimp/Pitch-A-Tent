@@ -1,15 +1,28 @@
-﻿import axios from 'axios';
+﻿//import axios from 'axios';
 
-const getCampsites = () => {
-    return new Promise((resolve, reject) => {
-        axios.get(`https://developer.nps.gov/api/v1/campgrounds?stateCode=TN&api_key=RXWv0vH3UESCkWTlVBHsfliqAAVGVm5V3FVbBoF2`)
-            .then(res => {
-                resolve(res.data)
-            })
-            .catch(err => {
-                reject(err)
-            })
-    })
-}
-export default getCampsites;
+
+//const getCampsites = (txt) => {
+//    return new Promise((resolve, reject) => {
+//            .then(res => {
+//                resolve(res.data)
+//            })
+//            .catch(err => {
+//                reject(err)
+//            })
+//    })
+//}
+
+//const addCampground = (myLibrary) => {
+//    return new Promise((resolve, reject) => {
+//        axios
+//            .post(`api/MyLibrary`, myLibrary)
+//            .then((res) => {
+//                resolve(res.data);
+//            })
+//            .catch((err) => {
+//                reject(console.error('Error in addingBook request', err))
+//            })
+//    });
+//};
+//export default getCampsites;
 

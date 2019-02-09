@@ -22,7 +22,7 @@ namespace Pitch_A_Tent.Controllers
             _storage = new LocationStorage();
         }
 
-        [HttpGet]
+        [HttpGet("")]
         public IActionResult GetAllLocations()
         {
             return Ok(_storage.GetAllLocations());

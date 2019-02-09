@@ -21,7 +21,7 @@ namespace Pitch_A_Tent.Controllers
         }
 
         //wishItem
-        [HttpGet]
+        [HttpGet("")]
         public IActionResult GetAll()
         {
             return Ok(_storage.GetAllWishItems());
@@ -35,7 +35,7 @@ namespace Pitch_A_Tent.Controllers
         }
 
         //wishItem
-        [HttpPost]
+        [HttpPost("additem")]
         public IActionResult AddNewWishItem([FromBody]WishItem wishItem)
         {
             return Ok(_storage.AddNewWishItem(wishItem));

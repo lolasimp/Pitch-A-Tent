@@ -14,7 +14,7 @@ namespace Pitch_A_Tent.Controllers
     [ApiController]
     public class CampTypeController : ControllerBase
     {
-        public CampTypeStorage _storage;
+        private readonly CampTypeStorage _storage;
 
         public CampTypeController()
         {
