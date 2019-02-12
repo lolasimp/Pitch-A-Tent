@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.Extensions.Configuration;
 using Pitch_A_Tent.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,8 @@ namespace Pitch_A_Tent.DataAccess
 {
     public class CampTypeStorage
     {
-        private const string ConnectionString= "Server = (local); Database=Pitch; Trusted_Connection=True";
+        private const string ConnectionString = "Server = (local); Database=Pitch; Trusted_Connection=True";
+
 
         public IEnumerable<CampingType> GetAllCampsiteTypes()
         {
