@@ -22,7 +22,7 @@ namespace Pitch_A_Tent.Controllers
             _storage = new UsersStorage();
         }
 
-        [HttpGet("/user")]
+        [HttpGet("")]
         public IActionResult GetAllUsers()
         {
             return Ok(_storage.GetAllUsers());

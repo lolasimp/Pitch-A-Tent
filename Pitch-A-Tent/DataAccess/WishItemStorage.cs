@@ -17,11 +17,12 @@ namespace Pitch_A_Tent.DataAccess
         using (var connection = new SqlConnection(ConnectionString))
         {
             connection.Open();
-            var result = connection.Query<WishItem>(@"select i.user_id, i.location_id, l.campingTypeId, l.description, i.id
-                                                    from wishItem as i
-                                                    join locations as l on i.location_id = l.id");
+            //var result = connection.Query<WishItem>(@"select i.*, l.campingTypeId
+            //                                        from wishItem as i
+            //                                        join locations as l on i.location_id = l.id");
+                var result = connection.Query<WishItem>(@"select * from wishItem");
 
-            return result;
+                return result;
         }
     }
 
@@ -56,8 +57,10 @@ namespace Pitch_A_Tent.DataAccess
 
                 var result3 = connection.Execute(@"INSERT INTO [dbo].[wishItem]
                                                 ([User_id],
-                                                [Location_id])
-                                                VALUES (@User_id, @Location_id)", wishItem
+                                                [Location_id],
+                                                [Name],
+                                                [Description])
+                                                VALUES (@User_id, @Location_id, @name, @description)", wishItem
                                                 );
 
                 return result3 == 1;

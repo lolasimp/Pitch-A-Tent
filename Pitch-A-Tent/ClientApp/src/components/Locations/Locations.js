@@ -1,57 +1,91 @@
 ﻿
 import React from 'react';
-import campgroundRequest from '../Home/Request/Request';
+import campgroundRequest from '../Requests/LocationRequest';
+import SearchResults from '../SearchResults/SearchResults';
+import wishResults from '../Requests/WishRequest';
+import './Locations.css';
+
 
 class Locations extends React.Component {
     state = {
-        campgrounds: [],
-        wishItems:[],
+        campgrounds: [], 
+        allWishItems: [],
+        searchResults:'',
+    }     
+
+    //componentWillMount() {
+    //    this.searchCampgrounds()
+    //}
+        searchCampgrounds = (e) => {
+            if (e.key === 'Enter') {
+                campgroundRequest
+                    .getCampgrounds(this.state.searchResult)
+                    .then(results => {
+                        this.setState({ campgrounds: results.data })
+                        console.log(this.state.campgrounds);
+                    })
+                    .catch(err => {
+                        console.error('Not getting campgrounds', err)
+                    })
+            }
     }
 
-    componentDidMount() {
-        campgroundRequest
-            .getCampgrounds()
-            .then((results) => {
-                this.setState({ campgrounds: results.data });
-            })
-            .catch((err) => {
-                console.error('error getting campgrounds', err);
-            })
+    //"location_id": 3,
+    //"campingTypeId": 6,
+    //"name": "oooo",
+    //"description":
 
-       
+    addNewWishClick = campgrounds => {
+        const wish = { ...this.state.allWishItems }
+        wish.location_id = campgrounds.location_id;
+        wish.campingTypeId = campgrounds.campingTypeId;
+        wish.name = campgrounds.name;
+        wish.description = campgrounds.description;
+        wishResults
+            .postWish(wish)
+            .then(() => {
+                this.props.history.push('/wishItems')
+            })
+            .catch(err => {
+                console.error('Not adding', err)
+    });
+    }
 
-        //campgroundRequest
-        //    .getLocations()
-        //    .then((locations) => {
-        //        this.setState({ locations });
-        //    })
-        //    .catch((err) => {
-        //        console.error('error getting campgrounds', err);
-        //    })
+
+    searchInput = (e) => {
+        this.setState({ searchResult: e.target.value });
+        console.log(this.state.searchResults);
     }
 
 
     render() {
         if (this.state.campgrounds) {
-            this.locationComponents = this.state.campgrounds.map(campground => {
+            this.campsiteComponent = this.state.campgrounds.map(campground => {
                 return (
-                    <div>
-                        <h2>{campground.name}</h2>
-                        <h4>{campground.description}</h4>
-                    </div>
-            );
+                    <SearchResults
+                        key={campground.id}
+                        campgroundDetails={campground}
+                        addNewWishClick={this.addNewWishClick}
+                    />
+                )
             })
         }
-    
+
         return (
-            <div className="Locations">
-                <h2> All Locations</h2>
-                <ul className="campgrounds">
-                    {this.locationComponents}
-                </ul>
+            <div className="Location">
+                <h2>Search Campgrounds</h2>
+                <input
+                    type="text"
+                    placeholder="Search Campgrounds"
+                    onChange={this.searchInput}
+                    onKeyPress={this.searchCampgrounds}
+                />
+                {this.campsiteComponent}
             </div>
+
+    
         );
     }
-}
+}          
 
 export default Locations;

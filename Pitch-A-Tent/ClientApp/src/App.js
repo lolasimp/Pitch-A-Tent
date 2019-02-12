@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Route, BrowserRouter, Redirect, Switch } from 'react-router-dom';
-//import { Route } from 'react-router';
-import  Locations  from './components/Locations/Locations';
-import Home from './components/Home/Home';
-import Login from './components/Login/Login';
+import { Route, Switch } from 'react-router-dom';
+import Locations from './components/Locations/Locations';
+
 import Register from './components/Register/Register';
+import WishList from './components/WishList/WishList';
 
 
 
@@ -14,10 +13,10 @@ export default class App extends Component {
   render() {
       return (
         <Switch>
-        <Route exact path='/Home' component={Home} />
-        <Route exact path='/' component={Locations} />
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/register' components={Register} />
+              <Route exact path='/' component={Locations} />
+              
+        <Route exact path='/register' component={Register} />
+        <Route exact path='/wishItems' component={WishList} />
         </Switch>
 
     );

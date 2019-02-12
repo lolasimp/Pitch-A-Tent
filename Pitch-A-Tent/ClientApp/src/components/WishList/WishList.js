@@ -1,28 +1,55 @@
-﻿//import React from 'react';
-//import wishItemRequest from './Request/Request';
+﻿import React from 'react';
+import wishRequest from '../Requests/WishRequest';
 
-//class WishList extends React.Component {
+class WishList extends React.Component {
 
-//    state = {
-//        wishLists: [],
-//    }
+    state = {
+        wishLists: [],
+    }
 
-//    componentDidMount() {
-//        wishItemRequest
-//            .getWishitems()
-//            .then((wishList) => {
-//                this.setState({ wishList });
-//            })
-//            .catch((err) => {
-//                console.error('error getting wishItems', err);
-//            })
-//    render() {
-//        return (
-//            <div className="WishList">
-//                <h2>WishList</h2>
-//            </div>
-//        );
-//    }
-//}
+    componentDidMount() {
+        this.myWishRequest()
+    }
+    myWishRequest = () => {
+        wishRequest
+            .getWishItem()
+            .then((wishLists) => {
+                this.setState({ wishLists })
+            })
+            .catch((error) => {
+                console.error('Not getting WishItems', error);
+            });
+    };
 
-//export default WishList;
+    deleteWishClick = (id) => {
+        wishRequest
+            .deleteWish(id)
+            .then(() => {
+                this.myWishRequest()
+            })
+            .catch(((err) => {
+                console.error('error deleting wish', err);
+            }));
+    }
+
+    render() {
+        const wishLists = this.state.wishLists.map((myItem) => {
+            return (
+                <div key={myItem.id}>
+                    <h2>{myItem.name}</h2>
+                    <h4>{myItem.description}</h4>
+                    <button type="button" className="btn btn-danger" onClick={()=>this.deleteWishClick(myItem.id)}>Delete</button>
+                </div>
+            );
+        })
+        return (
+            <div>
+                <h1>My Wish Items</h1>
+                {wishLists}
+            </div>
+        );
+    }
+
+}
+
+export default WishList;

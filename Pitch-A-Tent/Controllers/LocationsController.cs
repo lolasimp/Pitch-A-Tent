@@ -34,7 +34,7 @@ namespace Pitch_A_Tent.Controllers
             return Ok(_storage.GetSingleLocation(id));
         }
 
-        [HttpPost]
+        [HttpPost("")]
         public IActionResult AddLocation(Locations location)
         {
             return Ok(_storage.AddLocation(location));

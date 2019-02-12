@@ -35,7 +35,7 @@ namespace Pitch_A_Tent.Controllers
         }
 
         //wishItem
-        [HttpPost("additem")]
+        [HttpPost("")]
         public IActionResult AddNewWishItem([FromBody]WishItem wishItem)
         {
             return Ok(_storage.AddNewWishItem(wishItem));
