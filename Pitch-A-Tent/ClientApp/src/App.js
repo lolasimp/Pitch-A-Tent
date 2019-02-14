@@ -4,6 +4,9 @@ import Locations from './components/Locations/Locations';
 import {NavMenu} from './components/NavMenu';
 import Register from './components/Register/Register';
 import WishList from './components/WishList/WishList';
+import '../src/index.css';
+
+
 
 
 

@@ -3,14 +3,14 @@
     display: block;
 }*/
 
-body {
+/*body {
     background-image: url("../img/camp3.PNG");
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     /*opacity: 0.5;*/
-}
+/*}*/
 
 .tent {
     height: 80px;
@@ -21,7 +21,8 @@ body {
 
 
 .titleP {
-    color:black;
+    color: black;
+    font-family: 'Acme', sans-serif;
 }
 
 .searching {

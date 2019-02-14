@@ -1,6 +1,9 @@
 ﻿import React, { Component } from 'react';
 import tent from './img/Tent.png';
 
+import '../index.css'
+
+
 export class NavMenu extends Component {
   //displayName = NavMenu.name
 
