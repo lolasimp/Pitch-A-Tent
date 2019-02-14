@@ -1,6 +1,8 @@
 ﻿import React from 'react';
 import { Col } from 'react-bootstrap';
 
+import './SearchResults.css'
+
 class SearchResults extends React.Component {
     state = {
         Name: 'name',
@@ -19,14 +21,17 @@ class SearchResults extends React.Component {
         }
     
         return (
-            <div className="text-center">
+            <div className=" allCamps card text-center">
                 <Col sm={6} md={4}>
-                    <h4>{campgroundDetails.name}</h4>
+                    <div className="card-header">
+                        <h4>{campgroundDetails.name}</h4>
+                    </div>
+
                     <h5><strong>Description:</strong> {campgroundDetails.description}</h5>
                     <h5><strong>Coordinates:</strong> {campgroundDetails.latLong}</h5>
                     <h5><strong>Directions:</strong> {campgroundDetails.directionsUrl}</h5>
-                    <h5><strong>DirectionsOverview:</strong> {campgroundDetails.directionsOverview}</h5>
-                    <button type="button" class="btn btn-primary" onClick={saveToWishItems}>Add To Wish Items</button>
+                    <h5><strong>Directions Overview:</strong> {campgroundDetails.directionsOverview}</h5>
+                    <button type="button" className="btn btn-primary" onClick={saveToWishItems}>Add To Wish Items</button>
                 </Col>
             </div>
         )

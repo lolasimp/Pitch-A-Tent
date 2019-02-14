@@ -3,6 +3,7 @@ import React from 'react';
 import campgroundRequest from '../Requests/LocationRequest';
 import SearchResults from '../SearchResults/SearchResults';
 import wishResults from '../Requests/WishRequest';
+import tent from '../img/Tent.png';
 import './Locations.css';
 
 
@@ -73,14 +74,19 @@ class Locations extends React.Component {
 
         return (
             <div className="Location">
-                <h2>Search Campgrounds</h2>
-                <input
+                <div>
+                    <form className="form-inline my-2 my-lg-0">
+                        <h4 className="titleP">PITCH-A-TENT</h4>
+                    <input className="searching form-control mr-sm-2"
                     type="text"
                     placeholder="Search Campgrounds"
                     onChange={this.searchInput}
                     onKeyPress={this.searchCampgrounds}
-                />
+                        />
+                        </form>
+                    </div>
                 {this.campsiteComponent}
+
             </div>
 
     

@@ -1,4 +1,30 @@
-﻿.table {
+﻿/*.Location {
     background-color:grey;
-    display:block;
+    display: block;
+}*/
+
+body {
+    background-image: url("../img/camp3.PNG");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*opacity: 0.5;*/
+}
+
+.tent {
+    height: 80px;
+    width: 80px;
+    padding-bottom: 18px;
+    margin-top: -21px;
+}
+
+
+.titleP {
+    color:black;
+}
+
+.searching {
+    margin-left: 656px;
+    margin-top: 242px;
 }

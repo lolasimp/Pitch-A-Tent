@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Locations from './components/Locations/Locations';
-
+import {NavMenu} from './components/NavMenu';
 import Register from './components/Register/Register';
 import WishList from './components/WishList/WishList';
 
@@ -12,12 +12,14 @@ export default class App extends Component {
 
   render() {
       return (
-        <Switch>
-              <Route exact path='/' component={Locations} />
-              
+          <div>
+          <NavMenu />
+          <Switch>
+        <Route exact path='/' component={Locations} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/wishItems' component={WishList} />
-        </Switch>
+              </Switch>
+              </div>
 
     );
   }

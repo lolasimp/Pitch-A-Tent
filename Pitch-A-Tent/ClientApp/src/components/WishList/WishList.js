@@ -1,6 +1,8 @@
 ﻿import React from 'react';
 import wishRequest from '../Requests/WishRequest';
 
+import './WishList.css';
+
 class WishList extends React.Component {
 
     state = {
@@ -35,18 +37,24 @@ class WishList extends React.Component {
     render() {
         const wishLists = this.state.wishLists.map((myItem) => {
             return (
-                <div key={myItem.id}>
-                    <h2>{myItem.name}</h2>
-                    <h4>{myItem.description}</h4>
+                
+                <div className="card border-primary mb-3" key={myItem.id}>
+                    <div className="card-header">{myItem.name}</div>
+                    <div className="card-body">
+                        <h4 className="card-title">Description</h4>
+                        <p>{myItem.description}</p>
+                        </div>
                     <button type="button" className="btn btn-danger" onClick={()=>this.deleteWishClick(myItem.id)}>Delete</button>
-                </div>
+                    </div>
+               
             );
         })
         return (
-            <div>
+            <div className="myWish">
                 <h1>My Wish Items</h1>
                 {wishLists}
             </div>
+           
         );
     }
 
