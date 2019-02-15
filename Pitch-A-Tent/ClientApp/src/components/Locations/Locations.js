@@ -73,12 +73,11 @@ class Locations extends React.Component {
         }
 
         return (
-            <div className="Location">
-                <img className="tent" src={tent}></img>
-                <h2>PITCH A TENT</h2>
+            <div>
+                <h2 className="pitch text-center">PITCH-A-TENT</h2>
                 <div>
 
-                    <input className="form-control mr-sm-2"
+                    <input className="search mr-sm-2"
                     type="text"
                     placeholder="Search Campgrounds"
                     onChange={this.searchInput}

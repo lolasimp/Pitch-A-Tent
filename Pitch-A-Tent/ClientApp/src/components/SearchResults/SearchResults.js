@@ -21,18 +21,19 @@ class SearchResults extends React.Component {
         }
     
         return (
-            <div className=" allCamps card text-center">
-                <Col sm={6} md={4}>
-                    <div className="card-header">
-                        <h4>{campgroundDetails.name}</h4>
-                    </div>
+            <div className="card border-primary mb-3" key={campgroundDetails.id}>
+                <div className="card-header">{campgroundDetails.name}</div>
+                <div className="card-body">
+                    <h4 className="card-title">Description</h4>
+                    <p>{campgroundDetails.description}</p>
+                    <h4 className="card-title">Coordinates</h4>
+                    <p>{campgroundDetails.latLong}</p>
+                    <h4 className="card-title">Drection Overview</h4>
+                    <p>{campgroundDetails.directionsOverview}</p>
+                    <p>{campgroundDetails.directionsUrl}</p>
 
-                    <h5><strong>Description:</strong> {campgroundDetails.description}</h5>
-                    <h5><strong>Coordinates:</strong> {campgroundDetails.latLong}</h5>
-                    <h5><strong>Directions:</strong> {campgroundDetails.directionsUrl}</h5>
-                    <h5><strong>Directions Overview:</strong> {campgroundDetails.directionsOverview}</h5>
-                    <button type="button" className="btn btn-primary" onClick={saveToWishItems}>Add To Wish Items</button>
-                </Col>
+                </div>
+                <button type="button" className="btn btn-primary" onClick={saveToWishItems}>Add To Wish Items</button>
             </div>
         )
     }

@@ -51,7 +51,7 @@ class WishList extends React.Component {
         })
         return (
             <div className="myWish">
-                <h1>My Wish Items</h1>
+                <h1 className="wishes">My Wish Items</h1>
                 {wishLists}
             </div>
            

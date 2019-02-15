@@ -3,14 +3,14 @@
     display: block;
 }*/
 
-/*body {
-    background-image: url("../img/camp3.PNG");
+body {
+    background-image: url("../img/campbg.jpg");
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    /*opacity: 0.5;*/
-/*}*/
+    background-attachment: fixed;
+}
 
 .tent {
     height: 80px;
@@ -20,12 +20,19 @@
 }
 
 
-.titleP {
-    color: black;
+.pitch {
+    color: #2b6b5c;
     font-family: 'Acme', sans-serif;
+    font-size: 150px;
+    margin-top: 200px;
 }
 
 .searching {
     margin-left: 656px;
     margin-top: 242px;
+}
+
+.search {
+    width: 16%;
+    margin-left: 620px;
 }
